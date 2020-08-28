@@ -1,28 +1,32 @@
-<table mat-table [dataSource] = "dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource] = "dataSource" matSort class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="FirstName">
-      <mat-header-cell *matHeaderCellDef> FirstName, Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.FirstName} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> FirstName,  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.FirstName}} </mat-cell>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="LastName">
-      <mat-header-cell *matHeaderCellDef> LastName, Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.LastName</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> LastName,  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.LastName}}</mat-cell>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="Address">
-      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Address} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Address}} </mat-cell>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="PhoneNumber">
-      <mat-header-cell *matHeaderCellDef> PhoneNumber </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> PhoneNumber </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.PhoneNumber}} </mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
+
+  <mat-form-field>
+      <input matInput (keyup) = "applyfilter($event.target.value)">
+  </mat-form-field>
